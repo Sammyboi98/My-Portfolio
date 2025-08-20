@@ -1,6 +1,12 @@
 import "../App.css"
 
+import Stats from "../components/Stat";
+import FeaturedProjects from "../components/FeaturedProjects";
+import certMobile from "../assets/images/certrackerMobileImg.png";
+import paypetalMobile from "../assets/images/paypetalImg.png";
+import certWeb from "../assets/images/certrackerWebImg.png";
 import gridImage from "../assets/images/grid-image.png";
+import Services from "../components/Services";
 
 const About: React.FC = () => {
   return (
@@ -98,6 +104,37 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
+      <Stats
+        stats={[
+          { value: "5+", label: "Years Experience", color: "text-indigo-900" },
+          { value: "20+", label: "Projects Completed", color: "text-blue-500" },
+          { value: "10+", label: "Happy Clients", color: "text-cyan-400" },
+        ]}
+      />
+      <FeaturedProjects
+        viewAllLink="/projects"
+        projects={[
+          {
+            title: "Certracker Mobile App",
+            subtitle: "Mobile App Design",
+            image: certMobile,
+            link: "/projects/certracker-mobile",
+          },
+          {
+            title: "Paypetal Mobile App",
+            subtitle: "Mobile App Design",
+            image: paypetalMobile,
+            link: "/projects/paypetal-mobile",
+          },
+          {
+            title: "Certracker Web App",
+            subtitle: "Web App Design",
+            image: certWeb,
+            link: "/projects/certracker-web",
+          },
+        ]}
+      />
+      <Services />
     </div>
   );
 };

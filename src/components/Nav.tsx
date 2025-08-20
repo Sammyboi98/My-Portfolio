@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
@@ -6,10 +6,19 @@ import Logo from "../assets/images/Logo.png";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 50);
+  };
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
   return (
-    <nav className="px-4 my-10 flex items-center justify-center">
+    <nav className={`w-full px-4 my-10 z-50 ${scrolled ? "fixed top-0 left-0 right-0" : ""}`}>
       <div className="relative w-full max-w-6xl flex items-center justify-center">
-        <div className="flex justify-between lg:justify-center max-w-3xl items-center gap-x-10 w-full bg-[#F4F4F6F2] rounded-[100px] py-2 px-10">
+        <div className="flex justify-between lg:justify-center max-w-3xl mx-auto items-center gap-x-10 w-full bg-[#F4F4F6F2] shadow-lg  rounded-[100px] py-2 px-10">
           <img
             className="h-16 w-16 aspect-[4/3]"
             src={Logo}
