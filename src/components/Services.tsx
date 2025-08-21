@@ -79,7 +79,6 @@ const Services = () => {
               </div>
             </div>
           </div>
-
           {/* Center stacked */}
           <div className="flex flex-col gap-4">
             {services.slice(1, 3).map((service, idx) => (
