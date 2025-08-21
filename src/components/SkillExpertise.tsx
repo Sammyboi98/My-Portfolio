@@ -56,7 +56,7 @@ const SkillsExpertise = () => {
   ];
 
   return (
-    <div className="bg-gray-50 py-12 sm:py-16">
+    <div className="py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-10">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-3">
@@ -72,7 +72,7 @@ const SkillsExpertise = () => {
           {skillsData.map((category, index) => (
             <div
               key={index}
-              className="group relative rounded-2xl bg-cyan-300 p-6 pt-14 shadow-md transition-all duration-300 hover:bg-[#050A30]"
+              className="group relative rounded-tl-4xl rounded-tr-4xl rounded-2xl bg-cyan-300 p-6 pt-14 shadow-md transition-all duration-300 hover:bg-[#050A30] cursor-pointer"
             >
               {/* avatar overlapping top */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-10">
@@ -95,13 +95,6 @@ const SkillsExpertise = () => {
               </ul>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-10">
-          <div className="inline-flex items-center justify-center space-x-2 bg-white rounded-full px-5 py-2 shadow">
-            <div className="w-2.5 h-2.5 bg-cyan-500 rounded-full animate-pulse"></div>
-            <span className="text-sm text-gray-600 font-medium">Ready to collaborate</span>
-          </div>
         </div>
       </div>
     </div>

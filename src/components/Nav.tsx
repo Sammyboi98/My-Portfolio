@@ -16,17 +16,17 @@ useEffect(() => {
   return () => window.removeEventListener("scroll", handleScroll);
 }, []);
   return (
-    <nav className={`w-full px-4 my-10 z-50 transition-all ${scrolled ? "fixed top-0 left-0 right-0 shadow-4xl" : ""}`}>
-      <div className="relative w-full max-w-6xl flex items-center justify-center shadow-4xl">
-        <div className="flex justify-between lg:justify-center max-w-3xl mx-auto items-center gap-x-10 w-full bg-[#F4F4F6F2] shadow-4xl  rounded-[100px] py-2 px-10">
+    <nav className={`w-full px-4 py-4 sm:py-6 transition-all ${scrolled ? "fixed top-0 left-0 right-0 z-50 " : ""}`}>
+      <div className="relative w-full max-w-6xl mx-auto flex items-center justify-center">
+        <div className={`flex justify-between lg:justify-center max-w-3xl mx-auto items-center gap-x-6 w-full bg-[#F4F4F6F2] rounded-full py-2 sm:py-3 px-4 sm:px-6 md:px-10 ${scrolled ? "shadow-lg bg-white/60 backdrop-blur" : ""}`}>
           <img
-            className="h-16 w-16 aspect-[4/3]"
+            className="h-12 w-12 sm:h-14 sm:w-14 aspect-[4/3]"
             src={Logo}
             alt="Logo for the website"
           />
           {/* Desktop Navigation */}
           <div className="hidden lg:block">
-            <ul className="md:flex space-x-4 text-[#0E0F0F] gap-5 text-center font-medium">
+            <ul className="md:flex space-x-4 text-[#0E0F0F] gap-4 text-center font-medium text-sm sm:text-base">
               <li className="text-center hover:font-bold">
                 <Link to="/">Home</Link>
               </li>
@@ -52,47 +52,23 @@ useEffect(() => {
           <div className="lg:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-indigo-600 focus:outline-none"
+              className="text-gray-700 hover:text-indigo-600 focus:outline-none p-2 rounded-md bg-white/0"
+              aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-lg border z-50">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <a
-                href="#home"
-                className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600"
-              >
-                Home
-              </a>
-              <a
-                href="#about"
-                className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-indigo-600"
-              >
-                About
-              </a>
-              <a
-                href="#services"
-                className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-indigo-600"
-              >
-                Services
-              </a>
-              <a
-                href="#projects"
-                className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-indigo-600"
-              >
-                Projects
-              </a>
-              <a
-                href="#contact"
-                className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-indigo-600"
-              >
-                Contact
-              </a>
+          <div className="lg:hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-lg border z-50 px-4 py-3">
+            <div className="space-y-1">
+              <a href="#home" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">Home</a>
+              <a href="#about" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">About</a>
+              <a href="#services" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">Services</a>
+              <a href="#projects" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">Projects</a>
+              <a href="#contact" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">Contact</a>
             </div>
           </div>
         )}
