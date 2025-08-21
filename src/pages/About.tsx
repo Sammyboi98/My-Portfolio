@@ -7,6 +7,7 @@ import paypetalMobile from "../assets/images/paypetalImg.png";
 import certWeb from "../assets/images/certrackerWebImg.png";
 import gridImage from "../assets/images/grid-image.png";
 import Services from "../components/Services";
+import SkillsExpertise from "../components/SkillExpertise";
 
 const About: React.FC = () => {
   return (
@@ -135,6 +136,7 @@ const About: React.FC = () => {
         ]}
       />
       <Services />
+      <SkillsExpertise />
     </div>
   );
 };
