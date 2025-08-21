@@ -38,7 +38,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({
           {projects.map((project, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-xl shadow-lg transition-all duration-300 overflow-hidden flex flex-col p-3 sm:p-4 hover:bg-[#1C2260] text-[#000] hover:text-[#F4F4F6] cursor-pointer hover:shadow-xl"
+              className="rounded-lg transition-all duration-300 overflow-hidden flex flex-col p-3 sm:p-4 hover:bg-[#1C2260] text-[#000] hover:text-[#F4F4F6] cursor-pointer hover:shadow-xl"
             >
               <img
                 src={project.image}
@@ -52,7 +52,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({
                 </div>
                 <Link
                   to={project.link}
-                  className="mt-4 rounded-lg bg-[#050A30] px-4 py-2 text-sm sm:text-base font-medium text-[#F4F4F6] hover:bg-[#2AF5FF] hover:text-[#050A30] text-center transition-all duration-300"
+                  className="mt-4 rounded-full bg-[#050A30] px-4 py-2 text-sm sm:text-base font-medium text-[#F4F4F6] hover:bg-[#2AF5FF] hover:text-[#050A30] text-center transition-all duration-300"
                 >
                   View projects
                 </Link>

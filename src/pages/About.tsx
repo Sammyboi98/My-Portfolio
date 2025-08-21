@@ -26,9 +26,9 @@ const About: React.FC = () => {
         </p>
       </div>
   <div className="flex flex-col items-center mt-6 md:mt-10">
-        <div className="flex flex-col lg:grid grid-cols-6 grid-rows-8 gap-4 h-full text-[#0E0F0F]">
-          <div className="bg-[#28C2FF] flex flex-wrap md:flex-nowrap px-4 sm:px-6 lg:px-10 col-span-4 row-span-2 col-start-1 row-start-1 rounded-xl">
-            <div className="max-w-4xl flex flex-col justify-center py-6">
+        <div className="flex flex-col lg:grid lg:grid-cols-6 lg:grid-rows-8 gap-3 h-full text-[#0E0F0F]">
+          <div className="bg-[#28C2FF] flex flex-wrap md:flex-nowrap px-4 sm:px-6 lg:px-10 lg:col-span-4 lg:row-span-2 lg:col-start-1 lg:row-start-1 rounded-xl">
+            <div className="max-w-4xl flex flex-col justify-center py-3">
               <h2 className="text-[18px] font-bold mb-4">
                 User-Centered, Business-Driven
               </h2>
@@ -39,12 +39,12 @@ const About: React.FC = () => {
                 functional but successful.
               </p>
             </div>
-              <div className="max-w-[20rem] flex items-end">
-                <img className="w-full" src={gridImage} alt="" />
+              <div className="w-36 sm:w-48 h-20 sm:h-24 hidden lg:flex items-end">
+                <img className="w-full h-full object-contain" src={gridImage} alt="" />
               </div>
           </div>
-          <div className="bg-[#60afff] col-span-2 row-span-4 col-start-5 row-start-1 rounded-[16px] flex flex-wrap md:flex-nowrap flex-row lg:flex-col justify-between items-center pt-2 px-4 sm:px-6 lg:px-2">
-            <div className="max-w-4xl flex flex-col justify-center py-6">
+          <div className="bg-[#60afff] lg:col-span-2 lg:row-span-4 lg:col-start-5 lg:row-start-1 rounded-[16px] flex flex-wrap md:flex-nowrap flex-row lg:flex-col justify-between items-center pt-2 px-4 sm:px-6 lg:px-2">
+            <div className="max-w-4xl flex flex-col justify-center py-3">
               <h2 className="text-[18px] font-bold mb-4">
                 Research-Backed, Data-Driven
               </h2>
@@ -52,13 +52,13 @@ const About: React.FC = () => {
                Great design isn’t guesswork. I dive deep into user research, behavior patterns, and industry trends to make informed design decisions that enhance engagement and retention.
               </p>
             </div>
-              <div className="max-w-[20rem] flex items-end">
-                <img className="w-full" src={gridImage} alt="" />
+              <div className="w-36 sm:w-48 h-20 sm:h-24 hidden lg:flex items-end">
+                <img className="w-full h-full object-contain" src={gridImage} alt="" />
               </div>
           </div>
-          <div className="bg-[#60AFFF] rounded-[16px] flex flex-wrap md:flex-nowrap flex-row lg:flex-col justify-between items-center pt-2 px-4 sm:px-6 lg:px-2 col-span-2 row-span-4 col-start-1 row-start-3">
+          <div className="bg-[#60AFFF] rounded-[16px] flex flex-wrap md:flex-nowrap flex-row lg:flex-col justify-between items-center pt-2 px-4 sm:px-6 lg:px-2 lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-3">
             {/* div3 content */}
-            <div className="max-w-4xl flex flex-col justify-center py-6">
+            <div className="max-w-4xl flex flex-col justify-center py-3">
               <h2 className="text-[18px] font-bold mb-4">
                  Problem Solver at Heart
               </h2>
@@ -66,13 +66,13 @@ const About: React.FC = () => {
                Roadblocks? Constraints? I see them as opportunities for innovation. Whether it's optimizing a complex workflow or enhancing accessibility, I thrive on solving design challenges creatively and efficiently.
               </p>
             </div>
-              <div className="max-w-[20rem] flex items-end">
-                <img className="w-full" src={gridImage} alt="" />
+              <div className="w-36 sm:w-48 h-20 sm:h-24 hidden lg:flex items-end">
+                <img className="w-full h-full object-contain" src={gridImage} alt="" />
               </div>
           </div>
-          <div className="bg-[#050A30]  col-span-2 row-span-4 col-start-3 row-start-3 rounded-[16px] flex flex-wrap md:flex-nowrap flex-row lg:flex-col justify-between items-center pt-2 px-4 sm:px-6 lg:px-2 text-[#F4F4F6]">
+          <div className="bg-[#050A30] lg:col-span-2 lg:row-span-4 lg:col-start-3 lg:row-start-3 rounded-[16px] flex flex-wrap md:flex-nowrap flex-row lg:flex-col justify-between items-center pt-2 px-4 sm:px-6 lg:px-2 text-[#F4F4F6]">
             {/* div4 content */}
-             <div className="max-w-4xl flex flex-col justify-center py-6">
+             <div className="max-w-4xl flex flex-col justify-center py-3">
               <h2 className="text-[18px] font-bold mb-4">
                   Collaborative & Adaptive
               </h2>
@@ -80,13 +80,13 @@ const About: React.FC = () => {
                I don’t work in a silo. I collaborate closely with stakeholders, developers, and product teams to ensure a smooth process from ideation to implementation. Every project is a partnership, and I’m here to make sure we build something exceptional together.
               </p>
             </div>
-              <div className="max-w-[20rem] flex items-end">
-                <img className="w-full" src={gridImage} alt="" />
+              <div className="w-36 sm:w-48 h-20 sm:h-24 hidden lg:flex items-end">
+                <img className="w-full h-full object-contain" src={gridImage} alt="" />
               </div>
           </div>
-          <div className="bg-[#1C2260] text-[#F4F4F6] flex flex-wrap md:flex-nowrap px-4 sm:px-6 lg:px-10 col-span-4 row-span-2 col-start-1 row-start-7 rounded-[16px]">
+          <div className="bg-[#1C2260] text-[#F4F4F6] flex flex-wrap md:flex-nowrap px-4 sm:px-6 lg:px-10 lg:col-span-4 lg:row-span-2 lg:col-start-1 lg:row-start-7 rounded-[16px]">
             {/* div5 content */}
-            <div className="max-w-4xl flex flex-col justify-center py-6">
+            <div className="max-w-4xl flex flex-col justify-center py-3">
               <h2 className="text-[18px] font-bold mb-4">
                   Cross-Industry Expertise
               </h2>
@@ -94,14 +94,14 @@ const About: React.FC = () => {
                From fintech to healthcare, logistics to education, I’ve designed solutions that impact lives and transform industries. No matter the sector, my goal is the same: to create seamless, intuitive, and scalable experiences.
               </p>
             </div>
-              <div className="max-w-[20rem] flex items-end">
-                <img className="w-full" src={gridImage} alt="" />
+              <div className="w-36 sm:w-48 h-20 sm:h-24 hidden lg:flex items-end">
+                <img className="w-full h-full object-contain" src={gridImage} alt="" />
               </div>
           </div>
-          <div className="col-span-2 row-span-4 col-start-5 row-start-5 px-4 sm:px-6 lg:px-10">
+          <div className="lg:col-span-2 lg:row-span-4 lg:col-start-5 lg:row-start-5 col-span-2 row-span-4 col-start-5 row-start-5 px-4 sm:px-6 lg:px-10">
             {/* div6 content */}
-            <h1 className="text-2xl md:text-4xl mb-4 text-left leading-relaxed font-normal text-[#0E0F0F]">
-              Let’s create <br/> something impactful! Whether you're launching a new product or refining an existing one, I’m <br/> ready  to bring your vision to life.
+            <h1 className="text-2xl md:text-4xl mb-4 text-left leading-snug font-normal text-[#0E0F0F]">
+              Let’s create <br/> something impactful! Whether you're launching a new product or refining an existing one, I’m ready to bring your vision to life.
             </h1>
           </div>
         </div>

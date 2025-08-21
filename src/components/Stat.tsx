@@ -13,7 +13,7 @@ interface StatsProps {
 
 const Stats: React.FC<StatsProps> = ({ stats }) => {
   return (
-    <section className="w-full bg-gray-50 py-12 sm:py-16 md:py-20">
+    <section className="w-full py-12 sm:py-16 md:py-20">
       <div className="px-4 sm:px-6 max-w-5xl mx-auto flex flex-col md:flex-row justify-around items-center gap-6 sm:gap-8">
         {stats.map((stat, idx) => (
           <div key={idx} className="flex flex-col items-center text-center w-full md:w-auto py-4">
