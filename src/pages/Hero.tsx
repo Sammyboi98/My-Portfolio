@@ -4,11 +4,11 @@ import HeroImage from "../assets/images/hero.png";
 
 const Hero: React.FC = () => {
   return (
-    <div className="bg-[#1C2260] min-h-screen flex flex-col text-white font-Lato px-4 sm:px-6 lg:px-20 pt-6 lg:pt-12">
+  <div className="bg-[#1C2260] min-h-screen flex flex-col text-white font-Lato px-4 sm:px-6 lg:px-12 xl:px-20 pt-6 lg:pt-12">
       <Navbar />
       <div className="flex flex-col lg:flex-row justify-center items-center h-full py-8 lg:py-12 gap-6 lg:gap-12">
         <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start max-w-2xl space-y-6 text-white text-center lg:text-left">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
             Designing Digital
             <br /> Experiences That Drive
             <br /> Impact
@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
           <img
             src={HeroImage}
             alt="Hero Image"
-            className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-contain"
+            className="w-full max-w-[220px] sm:max-w-[320px] md:max-w-[420px] lg:max-w-[520px] xl:max-w-[640px] h-auto object-contain"
           />
         </div>
       </div>
