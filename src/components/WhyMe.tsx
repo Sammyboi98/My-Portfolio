@@ -149,12 +149,11 @@ const WhyMe = () => {
             </div>
 
             <div className="flex-1 flex flex-col justify-center text-gray-900 min-h-[8rem] sm:min-h-[10rem] md:min-h-[12rem]">
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-4 text-left leading-snug font-normal text-[#0E0F0F]">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-4 text-left leading-14 font-normal text-[#0E0F0F]">
                 Let’s create something impactful! Whether you’re launching a new
                 product or refining an existing one, I’m ready to bring your
                 vision to life.
               </h3>
-              <p className="mt-2 text-sm sm:text-base text-gray-700 leading-relaxed"></p>
             </div>
           </div>
         </div>

@@ -181,14 +181,6 @@ const Testimonials = () => {
             ))}
           </div>
         </div>
-
-        {/* Call to Action */}
-        {/* <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
-            <span className="font-semibold">Ready to work together?</span>
-            <span className="text-xl">🚀</span>
-          </div>
-        </div> */}
       </div>
     </div>
   );
