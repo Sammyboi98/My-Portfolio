@@ -4,21 +4,34 @@ import { Menu, X } from "lucide-react";
 
 import Logo from "../assets/images/Logo.png";
 
-const Navbar: React.FC = () => {
+interface NavProps{
+  navItems: { label: string; href: string, active? : boolean }[];
+}
+
+
+const Navbar: React.FC<NavProps> = ({ navItems }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-useEffect(() => {
-  const handleScroll = () => {
-    setScrolled(window.scrollY > 50);
-  };
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <nav className={`w-full px-4 py-4 sm:py-6 transition-all ${scrolled ? "fixed top-0 left-0 right-0 z-50 " : ""}`}>
+    <nav
+      className={`px-4 py-4 sm:py-6 transition-all ${
+        scrolled ? "fixed top-0 left-0 right-0 z-50 " : ""
+      }`}
+    >
       <div className="relative w-full max-w-6xl mx-auto flex items-center justify-center">
-        <div className={`flex justify-between lg:justify-center max-w-3xl mx-auto items-center gap-x-6 w-full bg-[#F4F4F6F2] rounded-full py-2 sm:py-3 px-4 sm:px-6 md:px-10 ${scrolled ? "shadow-lg bg-white/60 backdrop-blur" : ""}`}>
+        <div
+          className={`inline-flex justify-between lg:justify-center mx-auto items-center gap-x-6  bg-[#F4F4F6F2] rounded-full py-2 sm:py-3 px-4 sm:px-6 md:px-10 ${
+            scrolled ? "shadow-lg bg-white/60 backdrop-blur" : ""
+          }`}
+        >
           <img
             className="h-12 w-12 sm:h-14 sm:w-14 aspect-[4/3]"
             src={Logo}
@@ -27,24 +40,11 @@ useEffect(() => {
           {/* Desktop Navigation */}
           <div className="hidden lg:block">
             <ul className="md:flex space-x-4 text-[#0E0F0F] gap-4 text-center font-medium text-sm sm:text-base">
-              <li className="text-center hover:font-bold">
-                <Link to="/">Home</Link>
-              </li>
-              <li className="text-center hover:font-bold">
-                <Link to="/about">Why Me?</Link>
-              </li>
-              <li className="text-center hover:font-bold">
-                <Link to="/contact">Services</Link>
-              </li>
-              <li className="text-center hover:font-bold">
-                <Link to="/">Projects</Link>
-              </li>
-              <li className="text-center hover:font-bold">
-                <Link to="/about">Contact</Link>
-              </li>
-              <li className="text-center hover:font-bold">
-                <Link to="/contact">Resume</Link>
-              </li>
+              {navItems.map((item) => (
+                <li key={item.label} className="text-center hover:font-bold">
+                  <Link to={item.href}>{item.label}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -64,11 +64,36 @@ useEffect(() => {
         {isMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-lg border z-50 px-4 py-3">
             <div className="space-y-1">
-              <a href="#home" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">Home</a>
-              <a href="#about" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">About</a>
-              <a href="#services" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">Services</a>
-              <a href="#projects" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">Projects</a>
-              <a href="#contact" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">Contact</a>
+              <a
+                href="#home"
+                className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600"
+              >
+                Home
+              </a>
+              <a
+                href="#about"
+                className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600"
+              >
+                About
+              </a>
+              <a
+                href="#services"
+                className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600"
+              >
+                Services
+              </a>
+              <a
+                href="#projects"
+                className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600"
+              >
+                Projects
+              </a>
+              <a
+                href="#contact"
+                className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600"
+              >
+                Contact
+              </a>
             </div>
           </div>
         )}
