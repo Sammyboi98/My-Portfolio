@@ -2,6 +2,8 @@ import Hero from "../components/Hero";
 import ContactForm from "../components/ContactForm";
 import MyProjects from "../components/MyProjects";
 
+import impactHeroUnderline from "../assets/svg/Vector 2.svg";
+
 const Projects = () => {
   return (
     <>
@@ -12,7 +14,7 @@ const Projects = () => {
               My Projects
               {/* underline accent image */}
               <img
-                src="/src/assets/svg/Vector 2.svg"
+                src={impactHeroUnderline}
                 alt="Hero Underline"
                 aria-hidden="true"
                 className="pointer-events-none select-none absolute left-1/2 -translate-x-1/2 -bottom-6 z-10"
