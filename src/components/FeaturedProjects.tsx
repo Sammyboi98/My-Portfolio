@@ -1,5 +1,3 @@
-// components/FeaturedProjects.tsx
-import React from "react";
 import { Link } from "react-router-dom"; // or next/link if using Next.js
 import { projects } from "../lib/utils";
 import DesignShots from "./DesignShots";
@@ -28,8 +26,14 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({
 
       {/* Projects Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-        {projects.map((project, index) => (
-          <DesignShots key={index} title={project.title} subtitle={project.subtitle} image={project.image} link={project.link} />
+        {projects.slice(0, 4).map((project, index) => (
+          <DesignShots
+            key={index}
+            title={project.title}
+            subtitle={project.subtitle}
+            image={project.image}
+            link={project.link}
+          />
         ))}
       </div>
     </section>

@@ -4,10 +4,9 @@ import { Menu, X } from "lucide-react";
 
 import Logo from "../assets/images/Logo.png";
 
-interface NavProps{
-  navItems: { label: string; href: string, active? : boolean }[];
+interface NavProps {
+  navItems: { label: string; href: string; active?: boolean }[];
 }
-
 
 const Navbar: React.FC<NavProps> = ({ navItems }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,9 +25,9 @@ const Navbar: React.FC<NavProps> = ({ navItems }) => {
         scrolled ? "fixed top-0 left-0 right-0 z-50 " : ""
       }`}
     >
-      <div className="relative w-full max-w-6xl mx-auto flex items-center justify-center">
+      <div className="relative mx-auto flex items-center justify-center">
         <div
-          className={`inline-flex justify-between lg:justify-center mx-auto items-center gap-x-6  bg-[#F4F4F6F2] rounded-full py-2 sm:py-3 px-4 sm:px-6 md:px-10 ${
+          className={`inline-flex justify-between lg:justify-center mx-auto items-center gap-x-52 lg:gap-x-6  bg-[#F4F4F6F2] rounded-full py-2 sm:py-3 px-4 sm:px-6 md:px-10 ${
             scrolled ? "shadow-lg bg-white/60 backdrop-blur" : ""
           }`}
         >
@@ -41,7 +40,7 @@ const Navbar: React.FC<NavProps> = ({ navItems }) => {
           <div className="hidden lg:block">
             <ul className="md:flex space-x-4 text-[#0E0F0F] gap-4 text-center font-medium text-sm sm:text-base">
               {navItems.map((item) => (
-                <li key={item.label} className="text-center hover:font-bold">
+                <li key={item.label} className="text-center hover:font-bold cursor-pointer">
                   <Link to={item.href}>{item.label}</Link>
                 </li>
               ))}
@@ -63,38 +62,13 @@ const Navbar: React.FC<NavProps> = ({ navItems }) => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-lg border z-50 px-4 py-3">
-            <div className="space-y-1">
-              <a
-                href="#home"
-                className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600"
-              >
-                Home
-              </a>
-              <a
-                href="#about"
-                className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600"
-              >
-                About
-              </a>
-              <a
-                href="#services"
-                className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600"
-              >
-                Services
-              </a>
-              <a
-                href="#projects"
-                className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600"
-              >
-                Projects
-              </a>
-              <a
-                href="#contact"
-                className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600"
-              >
-                Contact
-              </a>
-            </div>
+            <ul className="space-y-2 text-[#0E0F0F] font-medium text-sm text-left">
+              {navItems.map((item) => (
+                <li key={item.label} className="text-center hover:font-bold cursor-pointer">
+                  <Link to={item.href}>{item.label}</Link>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
       </div>
