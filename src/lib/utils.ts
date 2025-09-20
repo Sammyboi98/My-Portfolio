@@ -13,10 +13,10 @@ import weatherflow from "../assets/images/weatherflow.png"
 
 export const homeNavItems = [
   { label: "Home", href: "/", active: true },
-  { label: "Why Me?", href: "/about" },
-  { label: "Services", href: "/services" },
+  { label: "Why Me?", href: "#about" },
+  { label: "Services", href: "#services" },
   { label: "Projects", href: "/projects" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "#contact" },
   { label: "Resume", href: "/resume" },
   // ... more items
 ];

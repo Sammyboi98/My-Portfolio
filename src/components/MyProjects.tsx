@@ -8,12 +8,8 @@ const MyProjects = () => {
     setIsSelected(category);
   };
   return (
-    <section className="px-4 sm:px-6 lg:px-10 py-12 max-w-6xl mx-auto space-y-10">
-      <div
-        className="flex gap-3 justify-start
-    overflow-x-auto sm:overflow-x-visible
-    whitespace-nowrap sm:whitespace-normal
-    scrollbar-hide py-4"
+    <section className="px-4 sm:px-6 lg:px-12 py-12 max-w-8xl mx-auto space-y-10 bg-[#E6E6E9]">
+      <div className="flex gap-3 justify-start overflow-x-auto sm:overflow-x-visible whitespace-nowrap sm:whitespace-normal scrollbar-hide py-4"
       >
         {categories.map((category, index) => (
           <button
