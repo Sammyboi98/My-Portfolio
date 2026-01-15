@@ -1,11 +1,13 @@
 import { motion } from "motion/react";
 import { useState } from "react";
-import { projects } from "../lib/utils";
+import { projects, landingPages } from "../lib/utils";
 import DesignShots from "./DesignShots";
+import LandingPages from "./LandingPages";
+import CaseStudies from "./CaseStudies";
 
 const MyProjects = () => {
-  const [isSelected, setIsSelected] = useState<string>("All");
-  const categories = ["All", "Design Shots", "Landing Pages", "Case Studies"];
+  const [isSelected, setIsSelected] = useState<string>("Design Shots");
+  const categories = ["Design Shots", "Landing Pages", "Case Studies"];
 
   const setNewCategory = (category: string) => {
     setIsSelected(category);
@@ -16,7 +18,7 @@ const MyProjects = () => {
       <div className="max-w-6xl mx-auto space-y-12">
         {/* Filter Tabs */}
         {/* ... existing filters ... */}
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-start gap-4">
           {categories.map((category, index) => (
             <button
               key={index}
@@ -34,7 +36,7 @@ const MyProjects = () => {
 
         {/* Projects Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12"
+          className="w-full"
           layout
           initial="hidden"
           whileInView="visible"
@@ -43,33 +45,44 @@ const MyProjects = () => {
             visible: { transition: { staggerChildren: 0.1 } },
           }}
         >
-          {projects
-            .filter(
-              (project) =>
-                isSelected === "All" ||
-                (project.label &&
-                  project.label.toLowerCase() === isSelected.toLowerCase())
-            )
-            .map((project, index) => (
-              <motion.div
-                key={index}
-                className="flex justify-center"
-                layout
-                variants={{
-                  hidden: { opacity: 0, y: 30 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-                }}
-              >
-                <div className="w-full max-w-lg">
-                  <DesignShots
-                    title={project.title}
-                    subtitle={project.subtitle}
-                    image={project.image}
-                    link={project.link}
-                  />
-                </div>
-              </motion.div>
-            ))}
+          {isSelected === "Landing Pages" ? (
+            <LandingPages landingPages={landingPages} />
+          ) : isSelected === "Case Studies" ? (
+            <CaseStudies />
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+              {projects
+                .filter(
+                  (project) =>
+                    project.label &&
+                    project.label.toLowerCase() === isSelected.toLowerCase()
+                )
+                .map((project, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex justify-center"
+                    layout
+                    variants={{
+                      hidden: { opacity: 0, y: 30 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.5 },
+                      },
+                    }}
+                  >
+                    <div className="w-full max-w-lg">
+                      <DesignShots
+                        title={project.title}
+                        subtitle={project.subtitle}
+                        image={project.image}
+                        link={project.link}
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+            </div>
+          )}
         </motion.div>
       </div>
     </section>

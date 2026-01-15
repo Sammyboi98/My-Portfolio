@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 import Logo from "../assets/images/Logo.png";
+import Resume from "../assets/OBADARE SAMSON OLUWOLE RESUME.pdf";
 
 interface NavProps {
   navItems: { label: string; href: string; active?: boolean }[];
@@ -40,8 +41,17 @@ const Navbar: React.FC<NavProps> = ({ navItems }) => {
           <div className="hidden lg:block">
             <ul className="md:flex space-x-4 text-[#0E0F0F] gap-4 text-center font-medium text-sm sm:text-base">
               {navItems.map((item) => (
-                <li key={item.label} className="text-center hover:font-bold cursor-pointer">
-                  <Link to={item.href}>{item.label}</Link>
+                <li
+                  key={item.label}
+                  className="text-center hover:font-bold cursor-pointer"
+                >
+                  {item.label === "Resume" ? (
+                    <a href={Resume} target="_blank" rel="noopener noreferrer">
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link to={item.href}>{item.label}</Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -64,8 +74,17 @@ const Navbar: React.FC<NavProps> = ({ navItems }) => {
           <div className="lg:hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-lg border z-50 px-4 py-3">
             <ul className="space-y-2 text-[#0E0F0F] font-medium text-sm text-left">
               {navItems.map((item) => (
-                <li key={item.label} className="text-center hover:font-bold cursor-pointer">
-                  <Link to={item.href}>{item.label}</Link>
+                <li
+                  key={item.label}
+                  className="text-center hover:font-bold cursor-pointer"
+                >
+                  {item.label === "Resume" ? (
+                    <a href={Resume} target="_blank" rel="noopener noreferrer">
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link to={item.href}>{item.label}</Link>
+                  )}
                 </li>
               ))}
             </ul>

@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import ContactForm from "../components/ContactForm";
 import MyProjects from "../components/MyProjects";
-import ProjectBg from "../assets/images/project-bg.png"; // Importing the background image
+import ProjectBg from "../assets/images/project-bg.webm.gif"; // Importing the background image
 import Navbar from "../components/Nav";
 import { projectsNavItems } from "../lib/utils";
 
@@ -11,13 +11,17 @@ const Projects = () => {
   return (
     <>
       <section
-        className="relative w-full h-[60vh] md:h-[70vh] bg-cover bg-center flex flex-col items-center justify-start overflow-hidden"
+        className="relative w-full h-[80vh] md:h-[90vh] bg-cover bg-center flex flex-col items-center justify-start overflow-hidden"
         style={{
           backgroundImage: `url(${ProjectBg})`,
           backgroundColor: "#0A0F3C", // Fallback
         }}
       >
-        <Navbar navItems={projectsNavItems} />
+        <div className="absolute inset-0 bg-black/50 z-0" />
+        <div className="relative z-10 w-full">
+          {" "}
+          <Navbar navItems={projectsNavItems} />
+        </div>
         <motion.div
           className="flex-1 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto space-y-8 z-10"
           initial={{ opacity: 0, y: 30 }}
