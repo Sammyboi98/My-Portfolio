@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import ContactBg from "../assets/images/Rectangle 4349.png";
 import Logo from "../assets/images/Logo.png";
 import LinkedinIcon from "../assets/images/linkedinIcon.png";
@@ -9,7 +10,7 @@ import EmailIcon from "../assets/images/emailIcon.png";
 const ContactForm = () => {
   return (
     <section className="relative pt-12 bg-[#E6E6E9]">
-      {/* Background */}
+      {/* ... existing background ... */}
       <div className="absolute top-0 left-0 w-full h-full z-10">
         <img
           src={ContactBg}
@@ -20,8 +21,15 @@ const ContactForm = () => {
 
       <div className="relative z-10">
         {/* Card */}
-        <div className="max-w-6xl mx-auto relative z-10 px-4 sm:px-6 lg:px-8 lg:translate-y-28 mb-24">
-          <div className="bg-[#E6E6E9] border border-gray-200 rounded-2xl shadow-2xl overflow-hidden">
+        <motion.div
+          className="max-w-6xl mx-auto relative z-10 px-4 sm:px-6 lg:px-8 lg:translate-y-28 mb-24"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <div className="bg-[#E6E6E9] border border-black rounded-2xl shadow-2xl overflow-hidden">
+            {/* ... existing card content ... */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 sm:p-8 lg:p-10">
               {/* Left Section */}
               <div>
@@ -34,12 +42,22 @@ const ContactForm = () => {
 
                 <div className="mt-6 space-y-4 text-gray-800">
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <img className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" src={PhonIcon} alt="" />
-                    <span className="text-sm sm:text-base font-medium">+2347050388560</span>
+                    <img
+                      className="w-4 h-4 sm:w-5 sm:h-5 text-green-600"
+                      src={PhonIcon}
+                      alt=""
+                    />
+                    <span className="text-sm sm:text-base font-medium">
+                      +2347050388560
+                    </span>
                   </div>
 
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <img className="w-4 h-4 sm:w-5 sm:h-5 text-red-600" src={EmailIcon} alt="" />
+                    <img
+                      className="w-4 h-4 sm:w-5 sm:h-5 text-red-600"
+                      src={EmailIcon}
+                      alt=""
+                    />
                     <span className="text-sm sm:text-base break-words font-medium">
                       Obadare.samson01@gmail.com
                     </span>
@@ -84,7 +102,7 @@ const ContactForm = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Footer */}
         <footer className="w-full mt-24">
@@ -144,7 +162,7 @@ const ContactForm = () => {
 
           <div className="w-full bg-[#E6E6E9]">
             <div className="max-w-6xl mx-auto text-center py-3 text-xs sm:text-sm text-[#050A30]">
-              © 2025 EL Obanory. All rights reserved.
+              © {new Date().getFullYear()} El_Shamzy. All rights reserved.
             </div>
           </div>
         </footer>

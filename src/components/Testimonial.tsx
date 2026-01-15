@@ -1,188 +1,202 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
-const Testimonials = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+import TestimonialBg from "../assets/images/testimonial-bg.png";
+import ShineIcon from "../assets/images/shine.png";
+import IgweImg from "../assets/images/igwe.png";
+import IlemobayoImg from "../assets/images/ilemobayo.png";
+import DevinImg from "../assets/images/devin.png";
+import ToriloImg from "../assets/images/torilo.png";
 
+const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
       text: "Samson is an incredibly intuitive designer! Having worked with him over the last two years, I can confidently say his UX/UI expertise, design thinking, and user research skills are top-notch. His ability to craft user-centric solutions is truly impressive!",
       clientName: "Shadrach Igwe",
-      clientRole: "Founder @ Certracker",
-      clientImage: "👨‍💼",
+      clientRole: "CO-Founder @ Certracker",
+      clientImage: IgweImg,
       rating: 5,
     },
     {
       id: 2,
-      text: "Working with samson elevated our entire product experience. His designs are not just beautiful—they’re strategic, user-focused, and aligned with our business goals. A true asset to the PayPetal journey.",
-      clientName: "Bamidayo Samson",
+      text: "Working with samson elevated our entire product experience. His designs are not just beautiful—they’re strategic, user-focused, and aligned with our business goals. A true asset to the PayPetal journey",
+      clientName: "Ilemobayo Samson",
       clientRole: "CEO @ Paypetal",
-      clientImage: "👨‍💻",
+      clientImage: IlemobayoImg,
       rating: 5,
     },
     {
       id: 3,
-      text: "Samson's design expertise transformed our digital presence. His attention to detail and user-focused approach resulted in a significant increase in user engagement and conversion rates.",
-      clientName: "Sarah Johnson",
-      clientRole: "Product Manager @ TechFlow",
-      clientImage: "👩‍💼",
+      text: "Working with Samson as our Senior Designer at CertTracker has been a game-changer. He blends design talent with a strong UX focus, turning complex workflows into simple, user-first solutions. Samson is hardworking, collaborative, and genuinely cares about the product and the people behind it.",
+      clientName: "Devin Patterson",
+      clientRole: "Founder @ Certracker",
+      clientImage: DevinImg,
+      rating: 5,
+    },
+    {
+      id: 4,
+      text: "Samson has been an invaluable part of Torilo Academy. His ability to simplify complex design concepts and connect with students made a lasting impact. Passionate, knowledgeable, and deeply committed. He has helped shape the next generation of designers.",
+      clientName: "Team Torilo",
+      clientRole: "Torilo Academy",
+      clientImage: ToriloImg,
       rating: 5,
     },
   ];
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(2);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setItemsPerPage(window.innerWidth >= 1024 ? 2 : 1);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Infinite loop logic: we want to show 2 items at a time
+  // For infinite scroll effect, we effectively just increment index and wrap around
+  const getDisplayedTestimonials = () => {
+    const displayed = [];
+    for (let i = 0; i < itemsPerPage; i++) {
+      const index = (currentIndex + i) % testimonials.length;
+      displayed.push(testimonials[index]);
+    }
+    return displayed;
+  };
+
   const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
 
   const prevTestimonial = () => {
-    setCurrentTestimonial(
+    setCurrentIndex(
       (prev) => (prev - 1 + testimonials.length) % testimonials.length
     );
   };
 
-  const goToTestimonial = (index: number) => {
-    setCurrentTestimonial(index);
-  };
-
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, index) => (
-      <Star
-        key={index}
-        className={`w-5 h-5 ${
-          index < rating ? "text-orange-400 fill-orange-400" : "text-gray-300"
-        }`}
-      />
-    ));
-  };
+  const displayedTestimonials = getDisplayedTestimonials();
 
   return (
-    <div className="min-h-screen py-16 px-8">
-      <div className="max-w-6xl mx-auto">
+    <section
+      className="relative w-full py-16 md:py-24 px-4 sm:px-6 lg:px-12 bg-cover bg-center bg-no-repeat flex flex-col justify-center overflow-hidden rounded-[2.5rem]"
+      style={{
+        backgroundImage: `url(${TestimonialBg})`,
+        backgroundColor: "#0A0F3C", // Fallback
+      }}
+    >
+      <div className="max-w-7xl mx-auto w-full relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-lg text-gray-600 mb-2">Testimonials</p>
-          <h1 className="text-4xl font-bold text-gray-900 mb-8">
-            Hear From My Clients
-          </h1>
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white relative inline-block">
+            Testimonials That
+            <img
+              src={ShineIcon}
+              alt=""
+              className="absolute -top-3 -right-8 text-white/80 w-6 h-6 transform rotate-12 hidden sm:block"
+            />
+          </h2>
+          <div>
+            <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white block sm:inline">
+              Speak to{" "}
+            </span>
+            <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2AF5FF] block sm:inline">
+              My Results
+            </span>
+          </div>
+          <p className="text-gray-300 max-w-2xl mx-auto text-base sm:text-lg pt-4 leading-relaxed">
+            What matters most to me isn’t just the final design—it’s the
+            experience along the way. Here’s what others have shared about
+            working together, creating together, and building ideas into
+            reality.
+          </p>
         </div>
 
-        {/* Testimonials Container */}
+        {/* Carousel Container */}
         <div className="relative">
-          <div className="flex items-center justify-center min-h-96">
-            {/* Navigation Arrow - Left */}
-            <button
-              onClick={prevTestimonial}
-              className="absolute left-0 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 text-gray-600 hover:text-blue-600"
-              aria-label="Previous testimonial"
+          <div className="overflow-hidden">
+            <motion.div
+              className="flex gap-6 sm:gap-8"
+              initial={false}
+              key={currentIndex}
             >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
+              <AnimatePresence mode="popLayout">
+                {displayedTestimonials.map((testimonial) => (
+                  <motion.div
+                    key={`${testimonial.id}-${currentIndex}`} // Unique key to force re-render for animation
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -50 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className={`flex-1 min-w-0 ${
+                      itemsPerPage === 1 ? "w-full" : "w-1/2"
+                    }`}
+                  >
+                    <div className="bg-white rounded-3xl p-8 sm:p-10 h-full shadow-2xl">
+                      <div className="flex flex-col-reverse lg:flex-row gap-8 h-full">
+                        {/* Left Column: Text & Stars */}
+                        <div className="flex-1 flex flex-col justify-center">
+                          <div className="flex gap-1 mb-6">
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className="w-6 h-6 fill-[#F59E0B] text-[#F59E0B]"
+                              />
+                            ))}
+                          </div>
+                          <p className="text-gray-900 text-lg leading-relaxed font-medium">
+                            {testimonial.text}
+                          </p>
+                        </div>
 
-            {/* Testimonials Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {/* Current testimonial */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="flex mb-4">
-                  {renderStars(testimonials[currentTestimonial].rating)}
-                </div>
-                <p className="text-gray-700 leading-relaxed mb-6 text-lg">
-                  "{testimonials[currentTestimonial].text}"
-                </p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-xl">
-                      {testimonials[currentTestimonial].clientImage}
-                    </span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">
-                      {testimonials[currentTestimonial].clientName}
-                    </h4>
-                    <p className="text-gray-600 text-sm">
-                      {testimonials[currentTestimonial].clientRole}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Next testimonial preview */}
-              {testimonials.length > 1 && (
-                <div className="bg-white/50 rounded-2xl p-8 shadow-lg backdrop-blur-sm border border-white/20">
-                  <div className="flex mb-4">
-                    {renderStars(
-                      testimonials[
-                        (currentTestimonial + 1) % testimonials.length
-                      ].rating
-                    )}
-                  </div>
-                  <p className="text-gray-600 leading-relaxed mb-6">
-                    "
-                    {testimonials[
-                      (currentTestimonial + 1) % testimonials.length
-                    ].text.substring(0, 100)}
-                    ..."
-                  </p>
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full flex items-center justify-center mr-4">
-                      <span className="text-xl">
-                        {
-                          testimonials[
-                            (currentTestimonial + 1) % testimonials.length
-                          ].clientImage
-                        }
-                      </span>
+                        {/* Right Column: Image & Info */}
+                        <div className="lg:w-48 flex-shrink-0 flex flex-col items-start lg:items-center space-y-4">
+                          <img
+                            src={testimonial.clientImage}
+                            alt={testimonial.clientName}
+                            className="w-32 h-32 sm:w-40 sm:h-40 rounded-2xl object-cover shadow-md"
+                          />
+                          <div className="text-left lg:text-center w-full">
+                            <h4 className="font-bold text-gray-900 text-xl">
+                              {testimonial.clientName}
+                            </h4>
+                            <p className="text-gray-500 text-base">
+                              {testimonial.clientRole}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-700">
-                        {
-                          testimonials[
-                            (currentTestimonial + 1) % testimonials.length
-                          ].clientName
-                        }
-                      </h4>
-                      <p className="text-gray-500 text-sm">
-                        {
-                          testimonials[
-                            (currentTestimonial + 1) % testimonials.length
-                          ].clientRole
-                        }
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Navigation Arrow - Right */}
-            <button
-              onClick={nextTestimonial}
-              className="absolute right-0 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 text-gray-600 hover:text-blue-600"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
           </div>
 
-          {/* Navigation Dots */}
-          <div className="flex justify-center mt-12 space-x-3">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToTestimonial(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentTestimonial
-                    ? "bg-blue-600 scale-125"
-                    : "bg-gray-300 hover:bg-gray-400"
-                }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
+          {/* Navigation Buttons */}
+          <div className="flex justify-center gap-4 mt-16">
+            <button
+              onClick={prevTestimonial}
+              className="w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white backdrop-blur-sm transition-all duration-300 group ring-1 ring-white/20"
+              aria-label="Previous"
+            >
+              <ChevronLeft className="w-8 h-8 group-hover:-translate-x-1 transition-transform" />
+            </button>
+            <button
+              onClick={nextTestimonial}
+              className="w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white backdrop-blur-sm transition-all duration-300 group ring-1 ring-white/20"
+              aria-label="Next"
+            >
+              <ChevronRight className="w-8 h-8 group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

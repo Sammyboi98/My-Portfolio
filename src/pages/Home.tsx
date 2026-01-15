@@ -11,7 +11,7 @@ import ContactForm from "../components/ContactForm";
 import WhyMe from "../components/WhyMe";
 
 import HeroImage from "../assets/images/hero.png";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -86,10 +86,7 @@ const Home = () => {
           { value: "10+", label: "Happy Clients", color: "text-cyan-400" },
         ]}
       />
-      <FeaturedProjects
-        viewAllLink="/projects"
-       
-      />
+      <FeaturedProjects viewAllLink="/projects" />
       <Services />
       <SkillsExpertise />
       <ToolsTechnologies />

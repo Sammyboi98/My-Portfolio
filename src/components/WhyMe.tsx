@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import WhyMeOne from "./icons/whymeOne";
 import WhyMeTwo from "./icons/whymeTwo";
 import WhyMeThree from "./icons/whymeThree";
@@ -44,8 +45,17 @@ const WhyMe = () => {
   ];
 
   return (
-    <section id="about" className="py-12 px-4 sm:px-6 lg:px-12">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="pt-24 pb-12 px-4 sm:px-6 lg:px-12">
+      <motion.div
+        className="max-w-7xl mx-auto"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={{
+          hidden: { opacity: 0, y: 30 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+        }}
+      >
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
@@ -77,7 +87,9 @@ const WhyMe = () => {
                     {features[0].description}
                   </p>
                 </div>
-                <div className="mt-3 sm:mt-0 flex-shrink-0">{features[0].icon}</div>
+                <div className="mt-3 sm:mt-0 flex-shrink-0">
+                  {features[0].icon}
+                </div>
               </div>
             </div>
 
@@ -116,18 +128,22 @@ const WhyMe = () => {
 
             {/* Bottom full-width card */}
             <div
-              className={`${features[4].bg} rounded-2xl p-4 sm:p-6 shadow-md hover:shadow-lg transition sm:col-span-2 min-h-[7rem] sm:min-h-[9rem] md:min-h-[10rem]`}
+              className={`${features[4].bg} rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition sm:col-span-2 min-h-[7rem] sm:min-h-[9rem] md:min-h-[10rem]`}
             >
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-semibold text-[#F4F4F6] mb-1">
-                    {features[4].title}
-                  </h3>
-                  <p className="text-base text-[#F4F4F6] leading-relaxed">
-                    {features[4].description}
-                  </p>
+              <div className="p-4 sm:p-6 pb-0">
+                <div className="flex flex-col sm:flex-row items-start sm:items-start justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-semibold text-[#F4F4F6] mb-1">
+                      {features[4].title}
+                    </h3>
+                    <p className="text-base text-[#F4F4F6] leading-relaxed">
+                      {features[4].description}
+                    </p>
+                  </div>
+                  <div className="flex-shrink-0 mt-3 sm:mt-0 sm:self-end">
+                    {features[4].icon}
+                  </div>
                 </div>
-                <div className="flex-shrink-0 mt-3 sm:mt-0">{features[4].icon}</div>
               </div>
             </div>
           </div>
@@ -157,7 +173,7 @@ const WhyMe = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
