@@ -12,6 +12,7 @@ import WhyMe from "../components/WhyMe";
 
 import HeroImage from "../assets/images/hero.png";
 import { Link } from "react-router-dom";
+import Testimonials from "../components/Testimonial";
 
 const Home = () => {
   return (
@@ -90,7 +91,10 @@ const Home = () => {
       <Services />
       <SkillsExpertise />
       <ToolsTechnologies />
-      <Contact />
+      <div className="bg-[#F4F4F6] flex flex-col text-[#0E0F0F] font-Lato px-4 sm:px-6 md:px-12 lg:px-20 py-20">
+        <Testimonials />
+      </div>
+      {/* <Contact /> */}
       <ContactForm />
     </>
   );

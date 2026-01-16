@@ -6,8 +6,55 @@ import BehanceIcon from "../assets/images/behanceIcon.jpg";
 import WhatsAppIcon from "../assets/images/whatsappIcon.png";
 import PhonIcon from "../assets/images/phoneIcon.png";
 import EmailIcon from "../assets/images/emailIcon.png";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const ContactForm = () => {
+  const form = useRef<HTMLFormElement>(null);
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus({ type: null, message: "" });
+
+    if (!form.current) return;
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        }
+      )
+      .then(
+        () => {
+          setLoading(false);
+          setStatus({
+            type: "success",
+            message: "Message sent successfully! I'll get back to you soon.",
+          });
+          form.current?.reset();
+          // Clear success message after 5 seconds
+          setTimeout(() => setStatus({ type: null, message: "" }), 5000);
+        },
+        (error) => {
+          setLoading(false);
+          setStatus({
+            type: "error",
+            message: "Failed to send message. Please try again later.",
+          });
+          console.error("FAILED...", error.text);
+        }
+      );
+  };
+
   return (
     <section className="relative pt-12 bg-[#E6E6E9]">
       {/* ... existing background ... */}
@@ -71,31 +118,54 @@ const ContactForm = () => {
                   Got Question?
                 </h3>
 
-                <form className="space-y-4 w-full max-w-sm">
+                <form
+                  ref={form}
+                  onSubmit={sendEmail}
+                  className="space-y-4 w-full max-w-sm"
+                >
                   <input
                     type="text"
+                    name="user_name"
                     placeholder="NAME"
+                    required
                     className="w-full border-b border-gray-300 focus:outline-none py-2 text-sm sm:text-base placeholder-gray-500 text-gray-900 bg-transparent"
                   />
 
                   <input
                     type="email"
+                    name="user_email"
                     placeholder="EMAIL"
+                    required
                     className="w-full border-b border-gray-300 focus:outline-none py-2 text-sm sm:text-base placeholder-gray-500 text-gray-900 bg-transparent"
                   />
 
                   <textarea
+                    name="message"
                     placeholder="MESSAGE"
                     rows={3}
+                    required
                     className="w-full border-b border-gray-300 focus:outline-none py-2 text-sm sm:text-base placeholder-gray-500 text-gray-900 bg-transparent resize-none"
                   ></textarea>
+
+                  {status.message && (
+                    <div
+                      className={`text-sm ${
+                        status.type === "success"
+                          ? "text-green-600"
+                          : "text-red-600"
+                      }`}
+                    >
+                      {status.message}
+                    </div>
+                  )}
 
                   <div className="flex justify-end">
                     <button
                       type="submit"
-                      className="px-6 py-2 bg-[#07103b] text-white text-sm sm:text-base font-medium rounded-full hover:bg-[#2AF5FF] hover:text-black transition shadow-sm"
+                      disabled={loading}
+                      className="px-6 py-2 bg-[#07103b] text-white text-sm sm:text-base font-medium rounded-full hover:bg-[#2AF5FF] hover:text-black transition shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Send a message
+                      {loading ? "Sending..." : "Send a message"}
                     </button>
                   </div>
                 </form>

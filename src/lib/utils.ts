@@ -138,7 +138,7 @@ export const landingPages = [
     title: "Paypetal",
     subtitle: "Fintech",
     image: paypetalLanding,
-    link: "https://paypetal.com",
+    link: "https://paypetalhq.com",
   },
   {
     title: "AIB Logistics",
