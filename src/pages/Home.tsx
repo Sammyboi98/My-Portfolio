@@ -6,7 +6,6 @@ import FeaturedProjects from "../components/FeaturedProjects";
 import Services from "../components/Services";
 import SkillsExpertise from "../components/SkillExpertise";
 import ToolsTechnologies from "../components/ToolTechnologies";
-import Contact from "../components/Contact";
 import ContactForm from "../components/ContactForm";
 import WhyMe from "../components/WhyMe";
 
