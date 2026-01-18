@@ -18,8 +18,8 @@ import paypetalLanding from "../assets/images/paypetal-landing.png";
 import dqvLanding from "../assets/images/dqv-landing.png";
 
 // Case Studies Images
-import coming1 from "../assets/images/coming1.png";
-import coming2 from "../assets/images/coming2.png";
+// import coming1 from "../assets/images/coming1.png";
+// import coming2 from "../assets/images/coming2.png";
 
 export const homeNavItems = [
   { label: "Home", href: "/", active: true },

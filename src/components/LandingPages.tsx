@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { MoveRight } from "lucide-react";
+
 
 interface LandingPageProps {
   title: string;
